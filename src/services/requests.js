@@ -1,4 +1,4 @@
-import page from '../../node_modules/page/page.mjs';
+import page from '../lib/page.js';
 import { getToken } from '../util.js';
 
 const baseURL = `https://clearcareer-nodejs-server.onrender.com/data/offers`;
@@ -115,31 +115,3 @@ export function deleteOffer(id) {
         })
         .catch(err => alert(err));
 }
-
-//apply for offer
-export function applyForOffer(offerId) {
-    fetch(applyURL, {
-        method: 'POST',
-        headers: {
-            'content-type': 'application/json',
-            'X-Authorization': getToken()
-        },
-        body: JSON.stringify(offerId)
-    })
-        .then(res => res.json())
-        .then(() => {
-            const countElement = document.getElementById('applications');
-            let num = Number(countElement.textContent) + 1;
-            countElement.textContent = num.toString();
-            document.getElementById('apply-btn').style.display = 'none';
-        })
-        .catch(err => {
-            alert(err);
-        })
-}
-
-//get applies for offer 
-export const getOfferApplies = (offerId) => fetch(applyURL + `?where=offerId%3D%22${offerId}%22&distinct=_ownerId&count`).then(res => res.json()).catch(err => alert(err));
-
-//get applies for offer from the current user
-export const getOfferAppliesForTheUser = (offerId, userId) => fetch(applyURL + `?where=offerId%3D%22${offerId}%22%20and%20_ownerId%3D%22${userId}%22&count`).then(res => res.json()).catch(err => alert(err));

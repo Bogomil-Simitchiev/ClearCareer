@@ -1,4 +1,4 @@
-import { html } from '../../node_modules/lit-html/lit-html.js';
+import { html } from '../lib/lit-html.js';
 import { getAllOffers } from '../services/requests.js';
 
 const offerTemplate = (offer) =>
