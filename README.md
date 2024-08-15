@@ -1,4 +1,4 @@
 # ClearCareer
-front-end part of the project "Clear Career"
+Frontend part of the project "Clear Career"
 
 URL of the project -> https://clearcareer-spa.web.app/
